@@ -1,16 +1,60 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import { Component } from 'react';
+import { nanoid } from 'nanoid';
+import { ContactForm } from './ContactForm/ContactForm';
+import ContactList from 'components/ContactList/ContactList';
+import Filter from 'components/Filter/Filter';
+export class App extends Component {
+  state = {
+    contacts: [ {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+    {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+    {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},],
+    filter: '',
+    name: '',
+    number: '',
+  };
+
+  addContact = contact => {
+    if (this.state.contacts.some(p => p.name === contact.name)) {
+      alert(`Friend ${contact.name} is already exists!`);
+      return;
+    }
+
+    const finalContact = {
+      id: nanoid(),
+      ...contact,
+    };
+
+    this.setState({
+      contacts: [finalContact, ...this.state.contacts],
+    });
+  };
+  onFilterContacts = ({ target: { value } }) => {
+    this.setState({
+      filter: value,
+    });
+  }
+
+  render() {
+    const filteredContacts = this.state.contacts.filter(contact =>
+      contact.name 
+        .toLowerCase() 
+        .trim() 
+        .includes(this.state.filter.toLowerCase())
+    );
+   
+     
+    return (
+      <>
+        <ContactForm onAddContact={this.addContact} />
+
+        <Filter
+          onFilterChange={this.onFilterContacts}
+          value={this.state.filter}
+        />
+
+        <ContactList contacts={filteredContacts} />
+      </>
+    );
+  }
+}
