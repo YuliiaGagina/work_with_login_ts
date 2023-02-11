@@ -21,3 +21,14 @@ padding: 10px;
 &:nth-of-type(2n){
     background-color: grey;
 }`
+
+export const Button = styled.button`
+margin-top: 12px;
+width: 90px;
+padding: 10px;
+background-color: #353333;
+color: white;
+border-radius: 50%;
+:hover{
+    background-color: red;
+}`
