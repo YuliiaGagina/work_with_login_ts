@@ -1,5 +1,6 @@
 import {Title, List, Item, Button } from './ContactList.styled';
 import PropTypes from 'prop-types';
+
 function ContactList({ contacts, deleteContact }) {
   return (
     <div>

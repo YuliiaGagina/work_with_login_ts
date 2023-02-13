@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
+import storage from 'helpers/storage'
 export class App extends Component {
   state = {
     contacts: [ {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
@@ -13,6 +14,17 @@ export class App extends Component {
     name: '',
     number: '',
   };
+  componentDidMount() {
+    const savedContacts = storage.load('contacts-list') ?? this.state.contacts;
+    this.setState({ contacts: savedContacts });
+  }
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts !== contacts) {
+      storage.save('contacts-list', contacts);
+      
+    }
+  }
 
   addContact = contact => {
     if (this.state.contacts.some(p => p.name === contact.name)) {
