@@ -22,7 +22,7 @@ export class App extends Component {
     const { contacts } = this.state;
     if (prevState.contacts !== contacts) {
       storage.save('contacts-list', contacts);
-      console.log(contacts);
+      console.log(contacts)
     }
   }
 
