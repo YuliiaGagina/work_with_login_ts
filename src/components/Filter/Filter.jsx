@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
-import {Title, Input} from './Filrer.styled'
-function Filter ({value, onFilterChange}){
+import {Title, Input} from './Filrer.styled';
+import { useDispatch } from 'react-redux';
+import { addFilter } from 'redux/filterSlice';
+function Filter (){
+  const dispatch = useDispatch();
     return(
         <div >
         <Title>Find contacts by name</Title>
         <Input
           type="text"
           name="filter"
-          value={value}
-          onChange={onFilterChange}
+          onChange={event => dispatch(addFilter(event.target.value))}
         />
       </div>
     )

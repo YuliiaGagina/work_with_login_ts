@@ -1,5 +1,9 @@
-
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
+import { nanoid } from 'nanoid';
 import { useState } from 'react';
+import { getContacts } from 'redux/selector';
+import { useSelector } from 'react-redux';
 import {
   Form,
   Title,
@@ -9,6 +13,8 @@ import {
   Button,
 } from './ContactForm.styled';
 export function ContactForm({onAddContact}) {
+   const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: '',
     number: '',
@@ -30,10 +36,16 @@ export function ContactForm({onAddContact}) {
     const contact = {
       name: formData.name,
       number: formData.number,
+      id: nanoid(),
+      
     };
 
-    onAddContact(contact);
-
+   
+    if (contacts.some(p => p.name === contact.name)) {
+      alert(`Friend ${contact.name} is already exists!`);
+      return;
+    }
+    dispatch(addContact(contact));
     reset();
   };
   const reset = () => {
