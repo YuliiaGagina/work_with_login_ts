@@ -1,15 +1,28 @@
 import {Title, List, Item, Button } from './ContactList.styled';
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+
+import { useSelector,  } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getFilteredContacts } from 'redux/selector';
-import { deleteContact } from 'redux/contactsSlice';
+
+import { getContcts } from 'redux/operations';
+import { useEffect } from 'react';
+import { deleteContacts } from 'redux/operations';
 function ContactList() {
 
-  // const contacts = useSelector(state => state.contacts.contacts );
-  
-  const contacts = useSelector(getFilteredContacts);
+
+
+const contacts = useSelector(getFilteredContacts);
   const dispatch = useDispatch();
+  
+ const handleDelete = (id) => {
+    dispatch(deleteContacts(id));
+  };
+
+ 
+  useEffect(() => {
+   dispatch(getContcts())
+  }, [dispatch]);
+
   return (
     <div>
         <Title>Contacts</Title>
@@ -20,7 +33,7 @@ function ContactList() {
               <Item key={name}>
                 <p>{name}:</p>
                 <p>{number}</p>
-                <Button  onClick={()=>{dispatch(deleteContact(id))}}>Delete</Button>
+                <Button  onClick={()=> handleDelete(id) }>Delete</Button>
                </Item>
               
               
@@ -31,7 +44,5 @@ function ContactList() {
     </div>
   );
 }
-ContactList.propTypes ={
-    contacts: PropTypes.array.isRequired,
-}
+
 export default ContactList;
