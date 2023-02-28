@@ -1,10 +1,13 @@
 import { useDispatch } from 'react-redux';
 // import { addContact } from 'redux/contactsSlice';
-import { nanoid } from 'nanoid';
+import { getIsloading } from 'redux/selector';
 import { useState } from 'react';
 import { getContacts } from 'redux/selector';
 import { useSelector } from 'react-redux';
 import { addContacts } from 'redux/operations';
+import { Loader } from 'components/Loader/Loader';
+
+
 import {
   Form,
   Title,
@@ -14,6 +17,7 @@ import {
   Button,
 } from './ContactForm.styled';
 export function ContactForm({onAddContact}) {
+  const isLoading = useSelector(getIsloading);
    const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -37,7 +41,7 @@ export function ContactForm({onAddContact}) {
     const contact = {
       name: formData.name,
       number: formData.number,
-      id: nanoid(),
+      
       
     };
 
@@ -58,6 +62,8 @@ export function ContactForm({onAddContact}) {
   };
 
   return (
+    <>
+    {isLoading && <Loader/>}
     <Form onSubmit={handleSubmit}>
       <Title>Contact list</Title>
       <Wrapper>
@@ -86,5 +92,6 @@ export function ContactForm({onAddContact}) {
       </Wrapper>
       <Button type="submit">Add contact</Button>
     </Form>
+    </>
   );
 }

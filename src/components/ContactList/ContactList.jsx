@@ -7,11 +7,13 @@ import { getFilteredContacts } from 'redux/selector';
 import { getContcts } from 'redux/operations';
 import { useEffect } from 'react';
 import { deleteContacts } from 'redux/operations';
+
 function ContactList() {
 
 
 
 const contacts = useSelector(getFilteredContacts);
+
   const dispatch = useDispatch();
   
  const handleDelete = (id) => {
@@ -25,6 +27,7 @@ const contacts = useSelector(getFilteredContacts);
 
   return (
     <div>
+    
         <Title>Contacts</Title>
       {contacts.length > 0 && (
         <List>

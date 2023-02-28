@@ -19,9 +19,9 @@ const contactsSlice = createSlice({
     state.isLoading = true;
     
   })
-   .addCase( getContcts.fulfilled, (state, action) =>{
+   .addCase( getContcts.fulfilled, (state, {payload}) =>{
         state.isLoading = false;
-        state.contacts = action.payload;
+        state.contacts = [...payload].reverse();
    })
    .addCase( getContcts.rejected, (state, action) =>{
     state.isLoading = false;
@@ -47,7 +47,7 @@ const contactsSlice = createSlice({
     state.isLoading = true;
   })
   .addCase(addContacts.fulfilled, (state, {payload}) =>{
-    state.contacts = [payload, ...state.contacts];
+    state.contacts = [payload,  ...state.contacts ];
     state.isLoading = false;
 
   })
