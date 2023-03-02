@@ -1,12 +1,13 @@
-import {Title, List, Item, Button } from './ContactList.styled';
+import { List, Item, Button } from './ContactList.styled';
 
 import { useSelector,  } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { getFilteredContacts } from 'redux/selector';
+import { getFilteredContacts } from 'redux/selectors';
 
 import { getContcts } from 'redux/operations';
 import { useEffect } from 'react';
 import { deleteContacts } from 'redux/operations';
+
 
 function ContactList() {
 
@@ -28,7 +29,7 @@ const contacts = useSelector(getFilteredContacts);
   return (
     <div>
     
-        <Title>Contacts</Title>
+        {/* <Title>Your friends</Title> */}
       {contacts.length > 0 && (
         <List>
           {contacts.map(({name, number, id}) => {
@@ -44,6 +45,7 @@ const contacts = useSelector(getFilteredContacts);
           })}
         </List>
       )}
+       
     </div>
   );
 }

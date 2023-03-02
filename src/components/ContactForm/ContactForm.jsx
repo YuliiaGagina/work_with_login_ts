@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 // import { addContact } from 'redux/contactsSlice';
-import { getIsloading } from 'redux/selector';
+import { getIsloading } from 'redux/selectors';
 import { useState } from 'react';
-import { getContacts } from 'redux/selector';
+import { getContacts } from 'redux/selectors';
 import { useSelector } from 'react-redux';
 import { addContacts } from 'redux/operations';
 import { Loader } from 'components/Loader/Loader';
@@ -65,7 +65,7 @@ export function ContactForm({onAddContact}) {
     <>
     {isLoading && <Loader/>}
     <Form onSubmit={handleSubmit}>
-      <Title>Contact list</Title>
+      <Title>Add your friend</Title>
       <Wrapper>
         <Text>Name</Text>
         <Input
