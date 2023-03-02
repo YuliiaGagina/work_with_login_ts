@@ -11,8 +11,6 @@ import { deleteContacts } from 'redux/operations';
 
 function ContactList() {
 
-
-
 const contacts = useSelector(getFilteredContacts);
 
   const dispatch = useDispatch();
