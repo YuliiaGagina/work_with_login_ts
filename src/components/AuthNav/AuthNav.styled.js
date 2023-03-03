@@ -28,10 +28,14 @@ export const Button = styled.button`
 color: white;
 background-color: #413941;
 border-radius: 15px;
-padding: 10px 25px;
-width: 150px;
+padding: 10px 20px;
+width: 80px;
 display: flex;
 justify-content: center;
 align-items: center;
+@media(min-width: 768px){
+    width: 150px;
+    padding: 10px 25px;
+}
 
 `
