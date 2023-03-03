@@ -13,3 +13,10 @@ flex-direction: row;
 }
 
 `
+export const FilterConractWrap = styled.div`
+padding-top: 30px;
+padding-left: 20px;
+@media(min-width: 768px){
+    padding: 0;
+}
+`
