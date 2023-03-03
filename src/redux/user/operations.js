@@ -19,7 +19,7 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await instance.post('/users/signup', credentials);
-      console.log(res);
+    
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {

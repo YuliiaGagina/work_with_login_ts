@@ -17,18 +17,6 @@ import { userReducer } from './user/userSlise';
 
 
 
-// const rootReducer = combineReducers({
-//   contacts: contactReducer,
-//   filter: filterReducer,
-// });
-
-// const persistConfig = {
-//   key: 'friends',
-//   version: 1,
-//   storage,
-//   blacklist: ['filter'],
-// };
-// const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const persistConfig = {
   key: 'user',

@@ -1,6 +1,6 @@
-import { ContactForm } from '../ContactForm/ContactForm';
+import { ContactForm } from '../../components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
-import Filter from '../Filter/Filter';
+import Filter from '../../components/Filter/Filter';
 // import { addFilter } from 'redux/filterSlice';
 // import { useDispatch } from 'react-redux';
 // import { useEffect } from 'react';
@@ -12,12 +12,9 @@ import { Wrapper, FilterConractWrap } from './Friends.styled';
 
 // import Filter from './../Filter/Filter';
 
-export function Friends() {
+export function Contacts() {
   const isLoading = useSelector(getIsloading);
-  //   const dispatch = useDispatch();
-  //   useEffect(() => {
-  //    dispatch(getFriends())
-  //   }, [dispatch]);
+
 
   return (
     <>

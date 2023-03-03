@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Navbar } from './Navbar/Navbar';
-import { Friends } from './Friends/Friends';
-import { Login } from './Login/Login';
-import { Register } from './Register/Register';
+import {Contacts} from 'pages/Contacts/Contacts';
+import { Login } from 'pages/Login/Login';
+import { Register } from '../pages/Register/Register';
 import { refreshUser } from 'redux/user/operations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
@@ -42,7 +42,7 @@ export function App() {
           <Route
             path="/contacts"
             element={
-              <PrivateRoute redirectTo="/login" component={<Friends />} />
+              <PrivateRoute redirectTo="/login" component={<Contacts />} />
             }
           />
         </Route>
