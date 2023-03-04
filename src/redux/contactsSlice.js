@@ -61,15 +61,6 @@ const contactsSlice = createSlice({
 });
 
 
-// export const { addContact,  deleteContact } =  contactsSlice.actions;
+
 export const contactReducer =  contactsSlice.reducer;
 
-// reducers: {
-//   addContact(state, { payload }) {
-   
-//     state.contacts = [...state.contacts, payload];
-//   },
-//   deleteContact(state, { payload }) {
-//     state.contacts = state.contacts.filter(item => item.id !== payload);
-//   },
-// },

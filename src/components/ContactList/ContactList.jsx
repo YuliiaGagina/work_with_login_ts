@@ -1,11 +1,11 @@
 import { List, Item, Button } from './ContactList.styled';
 
 import { useSelector,  } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { getFilteredContacts } from 'redux/selectors';
 
-import { getContcts } from 'redux/operations';
-import { useEffect } from 'react';
+import { getFilteredContacts } from 'redux/selectors';
+import { useDispatch } from 'react-redux';
+// import { getContcts } from 'redux/operations';
+// import { useEffect } from 'react';
 import { deleteContacts } from 'redux/operations';
 
 
@@ -19,10 +19,9 @@ const contacts = useSelector(getFilteredContacts);
     dispatch(deleteContacts(id));
   };
 
- 
-  useEffect(() => {
-   dispatch(getContcts())
-  }, [dispatch]);
+// useEffect(() => {
+//    dispatch( getContcts())
+//   }, [dispatch]);
 
   return (
     <div>

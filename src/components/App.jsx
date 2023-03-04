@@ -12,15 +12,18 @@ import { refreshUser } from 'redux/user/operations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { Home } from './Home/Home';
+import { useAuth } from 'hooks/useAuth';
 
 export function App() {
   const dispatch = useDispatch();
+  const {isRefreshing} = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  return (
-    <>
+  return isRefreshing ? (
+    <b>Refreshing user </b>
+  ) : (
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<Home/>} />
@@ -48,6 +51,6 @@ export function App() {
         </Route>
       </Routes>
     
-    </>
+  
   );
 }

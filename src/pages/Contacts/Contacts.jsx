@@ -10,11 +10,21 @@ import { getIsloading } from 'redux/selectors';
 import { Loader } from 'components/Loader/Loader';
 import { Wrapper, FilterConractWrap } from './Friends.styled';
 
-// import Filter from './../Filter/Filter';
+
+
+import { useDispatch } from 'react-redux';
+import { getContcts } from 'redux/operations';
+import { useEffect } from 'react';
 
 export function Contacts() {
   const isLoading = useSelector(getIsloading);
 
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch( getContcts())
+   }, [dispatch]);
 
   return (
     <>
