@@ -13,6 +13,7 @@ export const deleteContacts = createAsyncThunk(
   'contacts/deleteContacts',
   async(contactId : string) => {
     const response = await instance.delete(`/table/${contactId}/`);
+    
     return response.data;
   }
 );
