@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/user/operations';
+import { RootState } from "../../redux/store";
+import {  FormEvent } from 'react';
 import {
   SectionWrapper,
   Form,
@@ -8,12 +10,13 @@ import {
   Label,
   Button,
 } from './Login.styled';
+import { useAppDispatch } from '../../hooks/redux';
 
 export const Login = () => {
-  const dispatch = useDispatch();
-  const error = useSelector(state => state.user.error);
+ const dispatch = useAppDispatch();
+  const error = useSelector((state : RootState) => state.user.error);
 
-  const handelSubmit = event => {
+  const handelSubmit =  ( event : FormEvent, ) => {
     event.preventDefault();
     const { name, password } = event.target.elements;
     const user = {
@@ -31,9 +34,9 @@ export const Login = () => {
       {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
 
       <Form onSubmit={handelSubmit}>
-        <Label for="name">Your Email:</Label>
+        <Label htmlFor="name">Your Email:</Label>
         <Input type="text" id="name" name="name" placeholder="Your name" />
-        <Label for="password">Password:</Label>
+        <Label htmlFor="password">Password:</Label>
         <Input
           type="password"
           id="password"

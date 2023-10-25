@@ -32,7 +32,7 @@ const dispatch = useAppDispatch();
   };
 
   const handleUpdate = ( id : string) => {
-    const formattedDate = formatDateForServer(updatedData?.birthday_date);
+    const formattedDate = formatDateForServer(updatedData?.birthday_date!);
     const updatedDataFormatted = {
       ...updatedData,
       birthday_date: formattedDate,
@@ -45,8 +45,8 @@ const dispatch = useAppDispatch();
   };
 
   return (
-    <div>
-      {!!contacts.length  && !!updatedData && (
+    <>
+      {contacts.length && (
         <List>
           {contacts.map((contact : IContact  ) => (
             <Item key={contact.id}>
@@ -54,26 +54,26 @@ const dispatch = useAppDispatch();
                 <div>
                   <Input
                     type="text"
-                    value={updatedData.name}
+                    value={updatedData?.name}
                     onChange={e =>
-                      setUpdatedData({ ...updatedData, name: e.target.value })
+                      setUpdatedData({ ...updatedData!, name: e.target.value })
                     }
                   />
                   <Input
                     type="text"
-                    value={updatedData.email}
+                    value={updatedData?.email}
                     onChange={e =>
-                      setUpdatedData({ ...updatedData, email: e.target.value })
+                      setUpdatedData({ ...updatedData!, email: e.target.value })
                     }
                   />
                   <Input
                     type="date"
-                    value={updatedData.birthday_date}
+                    value={updatedData?.birthday_date}
                     onChange={e => {
                       const value = e.target.value;
                       if (/^\d{4}-\d{2}-\d{2}$/.test(value) || value === '') {
                         setUpdatedData({
-                          ...updatedData,
+                          ...updatedData!,
                           birthday_date: value,
                         });
                       }
@@ -82,20 +82,20 @@ const dispatch = useAppDispatch();
 
                   <Input
                     type="text"
-                    value={updatedData.address}
+                    value={updatedData?.address}
                     onChange={e =>
                       setUpdatedData({
-                        ...updatedData,
+                        ...updatedData!,
                         address: e.target.value,
                       })
                     }
                   />
                   <Input
                     type="text"
-                    value={updatedData.phone_number}
+                    value={updatedData?.phone_number}
                     onChange={e =>
                       setUpdatedData({
-                        ...updatedData,
+                        ...updatedData!,
                         phone_number: e.target.value,
                       })
                     }
@@ -119,7 +119,7 @@ const dispatch = useAppDispatch();
           ))}
         </List>
       )}
-    </div>
+    </>
   );
 }
 

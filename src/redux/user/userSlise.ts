@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { login } from './operations';
 
-interface IUser {
+ export interface IUser {
   name: string;
   password: string;
 }

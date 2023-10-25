@@ -9,18 +9,12 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
+
 import {contactReducer}   from './contactsSlice';
 import { filterReducer } from './filterSlice';
 import { userReducer } from './user/userSlise';
 
-// const persistConfig = {
-//   key: 'user',
-//   version: 1,
-//   storage,
-//   whitelist: ['token'],
-// };
-// const persistedReducer = persistReducer(persistConfig, userReducer);
+
 
 export const store = configureStore({
   reducer: {
@@ -41,4 +35,4 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 
-// export const persistor = persistStore(store);
+
