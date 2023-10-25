@@ -19,7 +19,7 @@ const dispatch = useAppDispatch();
 
   const handleDelete = (id : string) => {
      dispatch(deleteContacts(id) );
-  };
+  }; 
 
   const handleEdit = (contact ) => {
     setEditingContact(contact);

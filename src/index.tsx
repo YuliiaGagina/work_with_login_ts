@@ -18,8 +18,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Global styles={GlobalStyles} />
     <Provider store={store}>
-
-        <BrowserRouter>
+<BrowserRouter>
           <App />
         </BrowserRouter>
  
