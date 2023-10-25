@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-08-phonebook",
+  "name": "work_with_login_ts",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://YuliiaGagina.github.io/goit-react-hw-08-phonebook",
+  "homepage": "https://YuliiaGagina.github.io/work_with_login_ts",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -10,6 +10,9 @@
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "@types/node": "^20.8.8",
+    "@types/react": "^18.2.31",
+    "@types/react-dom": "^18.2.14",
     "axios": "^1.3.4",
     "modern-normalize": "^1.1.0",
     "nanoid": "^4.0.1",
@@ -20,6 +23,7 @@
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
     "redux-persist": "^6.0.0",
+    "typescript": "^5.2.2",
     "web-vitals": "^2.1.3"
   },
   "scripts": {

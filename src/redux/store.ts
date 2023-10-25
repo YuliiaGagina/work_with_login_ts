@@ -1,5 +1,5 @@
-import {  configureStore } from "@reduxjs/toolkit";
-// import storage from 'redux-persist/lib/storage';
+import { configureStore } from '@reduxjs/toolkit';
+
 import {
   persistStore,
   persistReducer,
@@ -11,29 +11,24 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { contactReducer } from "./contactsSlice";
-import { filterReducer } from "./filterSlice";
+import {contactReducer}   from './contactsSlice';
+import { filterReducer } from './filterSlice';
 import { userReducer } from './user/userSlise';
 
-
-
-
-const persistConfig = {
-  key: 'user',
-  version: 1,
-  storage,
-  whitelist: ['token'],
-};
-const persistedReducer = persistReducer(persistConfig, userReducer);
+// const persistConfig = {
+//   key: 'user',
+//   version: 1,
+//   storage,
+//   whitelist: ['token'],
+// };
+// const persistedReducer = persistReducer(persistConfig, userReducer);
 
 export const store = configureStore({
- 
   reducer: {
     contacts: contactReducer,
     filter: filterReducer,
-    user: persistedReducer,
+    user: userReducer,
   },
-   
 
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -43,6 +38,8 @@ export const store = configureStore({
     }),
 });
 
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);

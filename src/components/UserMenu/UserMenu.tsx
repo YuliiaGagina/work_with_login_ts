@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { HeaderWrapper } from './UserMenu.styled';
 export const UserMenu = () => {
   return (
-    <HeaderWrapper >
+    <HeaderWrapper>
       <div>
         <NavLink to="/">Home</NavLink>
       </div>
@@ -11,9 +11,6 @@ export const UserMenu = () => {
       <ul>
         <li>
           <NavLink to="login">Login</NavLink>
-        </li>
-        <li>
-          <NavLink to="register">Register</NavLink>
         </li>
       </ul>
     </HeaderWrapper>
