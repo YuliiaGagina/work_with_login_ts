@@ -4,14 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getFilteredContacts } from '../../redux/selectors';
 import { deleteContacts, ChangeContact } from '../../redux/operations';
 import { IContact } from '../../types/types';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 // import { IForm } from '../ContactForm/ContactForm';
 
 
 
 
 function ContactList() {
-  const contacts = useSelector(getFilteredContacts);
+  const contacts = useAppSelector(getFilteredContacts);
 const dispatch = useAppDispatch();
 
   const [editingContact, setEditingContact] = useState(null);

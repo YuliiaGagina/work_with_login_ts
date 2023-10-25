@@ -16,7 +16,7 @@ import {
   Button,
 } from './ContactForm.styled';
 import { IContact } from '../../types/types';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 
 interface IForm {
    name: string,
@@ -28,8 +28,8 @@ interface IForm {
 
 
 export function ContactForm() {
-  const isLoading = useSelector(getIsloading);
-  const contacts = useSelector(getContacts);
+  const isLoading = useAppSelector(getIsloading);
+  const contacts = useAppSelector(getContacts);
    const dispatch = useAppDispatch();
   const [userMessage, setUserMessage] = useState<string>('');
   const [formData, setFormData] = useState<IForm>({
