@@ -1,6 +1,7 @@
-// import axios from "axios";
+
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { instance } from './user/operations';
+import { IForm } from '../components/ContactForm/ContactForm';
 
 export const getContcts = createAsyncThunk('people/getAll', async () => {
   const response = await instance.get('/table/');
@@ -9,7 +10,7 @@ export const getContcts = createAsyncThunk('people/getAll', async () => {
 
 export const deleteContacts = createAsyncThunk(
   'contacts/deleteContacts',
-  async contactId => {
+  async(contactId : string) => {
     const response = await instance.delete(`/table/${contactId}/`);
     return response.data;
   }
@@ -17,7 +18,9 @@ export const deleteContacts = createAsyncThunk(
 
 export const ChangeContact = createAsyncThunk(
   'contacts/changeContact',
-  async ({ contactId, ContactData }) => {
+  async ({ contactId, ContactData }: {
+    contactId: string, ContactData : IForm
+  }) => {
     const response = await instance.patch(`/table/${contactId}/`, ContactData);
     return response.data;
   }
@@ -25,7 +28,7 @@ export const ChangeContact = createAsyncThunk(
 
 export const addContacts = createAsyncThunk(
   'contacts/addContacts',
-  async contact => {
+  async (contact : IForm) => {
     const response = await instance.post(`/table/`, contact);
 
     return response.data;

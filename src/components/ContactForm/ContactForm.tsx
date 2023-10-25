@@ -1,8 +1,8 @@
-import { useDispatch } from 'react-redux';
+
 import { getIsloading } from '../../redux/selectors';
 import { useState, useEffect, FormEvent } from 'react';
 import { getContacts } from '../../redux/selectors';
-import { useSelector } from 'react-redux';
+
 import { addContacts } from '../../redux/operations';
 import { Loader } from '../Loader/Loader';
 
@@ -18,7 +18,7 @@ import {
 import { IContact } from '../../types/types';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 
-interface IForm {
+ export interface IForm {
    name: string,
     email: string,
     birthday_date: string,
@@ -162,7 +162,7 @@ export function ContactForm() {
     }
   };
 
-  const handleBlur =(inputName : string )  => {
+  const handleBlur =(inputName : keyof IForm)  => {
     if (formData[inputName].trim() === '' ) {
       setFormErrors(prevErrors => ({
         ...prevErrors,

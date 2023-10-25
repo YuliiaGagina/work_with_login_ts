@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { List, Item, Button, Input } from './ContactList.styled';
-import { useSelector, useDispatch } from 'react-redux';
+
 import { getFilteredContacts } from '../../redux/selectors';
 import { deleteContacts, ChangeContact } from '../../redux/operations';
 import { IContact } from '../../types/types';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-// import { IForm } from '../ContactForm/ContactForm';
+import {IForm}   from '../ContactForm/ContactForm';
 
 
 
 
 function ContactList() {
-  const contacts = useAppSelector(getFilteredContacts);
+  const contacts: IContact[] = useAppSelector(getFilteredContacts);
 const dispatch = useAppDispatch();
 
-  const [editingContact, setEditingContact] = useState(null);
-  const [updatedData, setUpdatedData] = useState();
+  const [editingContact, setEditingContact] = useState<IContact | null>(null);
+  const [updatedData, setUpdatedData] = useState<IForm | null>(null);
 
-  const handleDelete = (id : string) => {
+  const handleDelete = (id: string ) => {
      dispatch(deleteContacts(id) );
   }; 
 
-  const handleEdit = (contact ) => {
+  const handleEdit = (contact : IContact ) => {
     setEditingContact(contact);
     setUpdatedData({ ...contact });
   };
@@ -31,25 +31,25 @@ const dispatch = useAppDispatch();
     return d.toISOString().split('T')[0];
   };
 
-  const handleUpdate = (id : string) => {
-    const formattedDate = formatDateForServer(updatedData.birthday_date);
+  const handleUpdate = ( id : string) => {
+    const formattedDate = formatDateForServer(updatedData?.birthday_date);
     const updatedDataFormatted = {
       ...updatedData,
       birthday_date: formattedDate,
     };
 
     dispatch(
-      ChangeContact({ contactId: id, ContactData: updatedDataFormatted })
+      ChangeContact({contactId: id, ContactData: updatedDataFormatted}  )
     );
     setEditingContact(null);
   };
 
   return (
     <div>
-      {contacts.length > 0 && (
+      {!!contacts.length  && !!updatedData && (
         <List>
-          {contacts.map((contact ) => (
-            <Item key={contact.name}>
+          {contacts.map((contact : IContact  ) => (
+            <Item key={contact.id}>
               {editingContact === contact ? (
                 <div>
                   <Input
@@ -100,7 +100,7 @@ const dispatch = useAppDispatch();
                       })
                     }
                   />
-                  <Button onClick={() => handleUpdate(contact.id)}>Save</Button>
+                  <Button onClick={()=> handleUpdate((contact as IContact).id)}>Save</Button>
                 </div>
               ) : (
                 <div>
